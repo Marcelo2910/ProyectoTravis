@@ -1,7 +1,14 @@
 language: python
 python:
   - "3.8"
+# command to install dependencies
 install:
+  - sudo apt-get update
+  - sudo apt-get install -y build-essential python3-dev python-setuptools python3-wheel python3-cffi libcairo2
   - pip install -r requirements.txt
+
+before script:
+  - pip install -r requirements.txt
+
 script:
-  - pytest
+  - python manage.py test
